@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tool Login</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <main class="login-card">
+    <div class="brand-mark" aria-hidden="true">↗</div>
+    <p class="eyebrow">MEMBER ACCESS</p>
+    <h1>Welcome back</h1>
+    <p class="subtext">Sign in to continue to your tool.</p>
+    <form id="loginForm">
+      <label for="username">Username</label>
+      <input id="username" name="username" autocomplete="username" required maxlength="100">
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" autocomplete="current-password" required maxlength="500">
+      <button id="submitButton" type="submit">Sign in</button>
+      <p id="message" role="status" aria-live="polite"></p>
+    </form>
+    <p class="footnote">Access is managed by the site administrator.</p>
+  </main>
+  <iframe name="authFrame" id="authFrame" title="Authentication response" hidden></iframe>
+  <form id="bridgeForm" method="post" target="authFrame" hidden>
+    <input type="hidden" name="payload" id="payloadField">
+  </form>
+  <script src="login.js"></script>
+</body>
+</html>
