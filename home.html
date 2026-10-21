@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Example Tool</title>
+  <link rel="stylesheet" href="login.css">
+  <style>
+    .tool-card { width:min(100%,700px); padding:30px; border:1px solid var(--line); border-radius:20px; background:var(--panel); }
+    .tool-card h1 { margin-bottom:12px; }
+    .tool-card p { color:var(--muted); line-height:1.6; }
+    .tool-card button { max-width:180px; }
+  </style>
+</head>
+<body>
+  <main class="tool-card">
+    <p class="eyebrow">EXAMPLE TOOL</p>
+    <h1 id="welcome">Checking session…</h1>
+    <p>This is a demonstration page. Its HTML is public because it is hosted on GitHub Pages. Use backend verification for every private data request or important operation.</p>
+    <button type="button" onclick="ToolLogin.logout()">Log out</button>
+  </main>
+  <iframe name="authFrame" id="authFrame" title="Authentication response" hidden></iframe>
+  <form id="bridgeForm" method="post" target="authFrame" hidden><input type="hidden" name="payload" id="payloadField"></form>
+  <script src="login.js"></script>
+  <script>
+    const s = ToolLogin.getSession();
+    if (!s || !s.token) location.replace("index.html");
+    else {
+      document.getElementById("welcome").textContent = "Signed in as " + s.username;
+      ToolLogin.verify();
+    }
+  </script>
+</body>
+</html>
